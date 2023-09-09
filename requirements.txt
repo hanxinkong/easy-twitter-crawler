@@ -1,0 +1,6 @@
+easy_spider_tool==1.0.7
+loguru==0.7.0
+my_fake_useragent==0.2.1
+requests==2.27.1
+requests_html==0.10.0
+urllib3==1.26.15

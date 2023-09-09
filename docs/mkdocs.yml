@@ -1,0 +1,28 @@
+site_name: easy twitter crawler
+site_description: 推特（Twitter）采集程序，支持元搜索,用户,粉丝,关注,发文,回复,评论采集
+repo_name: hanxinkong/easy-twitter-crawler
+repo_url: https://github.com/hanxinkong/easy-twitter-crawler
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  palette_mode: auto
+
+nav:
+  - 首页: index.md
+  - 元搜索: example/search.md
+  - 用户采集: example/user.md
+  - 通用采集: example/common.md
+  - 更新日志: log.md
