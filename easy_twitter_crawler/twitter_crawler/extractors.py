@@ -2,6 +2,8 @@
 推特清洗器
 """
 import re
+
+from easy_spider_tool import date_parse
 from requests_html import HTML
 
 from .exceptions import (ArticleLoginException, UserLoginException,
@@ -703,6 +705,9 @@ class UserExtractor(BaseExtractor):
         user_id = kwargs.pop('user_id', False)
         start_time = self.options.pop('start_time', False)
         end_time = self.options.pop('end_time', False)
+
+        if start_time:
+            start_time = date_parse(start_time, default_time_scheme=None)
 
         if type_name == REPLY:
             self.options.update({'data_type': ARTICLE})
