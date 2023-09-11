@@ -749,14 +749,16 @@ class UserExtractor(BaseExtractor):
             base_url = USER_REPLY_URL
             join_cursor = USER_REPLY_CURSOR
 
-        for page_url in page_urls:
+        for index, page_url in enumerate(page_urls, start=1):
 
             if next_cursor:
                 next_cursor = quote(join_cursor.format(cursor=next_cursor))
 
             page_url = generating_page_link(base_url, cursor=next_cursor, user_id=user_id, data_type=type_name)
 
-            logger.warning(f'request next url {page_url}')
+            logger.warning(f'[{index}] ===> request next cursor {next_cursor}')
+
+            # logger.warning(f'request next url {page_url}')
 
             response = self.request_fn(page_url, **kwargs)
 
