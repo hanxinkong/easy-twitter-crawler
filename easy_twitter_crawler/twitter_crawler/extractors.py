@@ -750,6 +750,10 @@ class UserExtractor(BaseExtractor):
             join_cursor = USER_REPLY_CURSOR
 
         for page_url in page_urls:
+
+            if next_cursor:
+                next_cursor = quote(join_cursor.format(cursor=next_cursor))
+
             page_url = generating_page_link(base_url, cursor=next_cursor, user_id=user_id, data_type=type_name)
 
             logger.warning(f'request next url {page_url}')
@@ -775,6 +779,10 @@ class UserExtractor(BaseExtractor):
                     first=False,
                     default=[]
                 )
+
+                # 后续没有文章了
+                if len(elements) < 3:
+                    break
 
                 for element in elements:
                     if total_count <= len(data_list):
@@ -830,7 +838,7 @@ class UserExtractor(BaseExtractor):
                 # if next_cursor == '' or node_type != 'user':
                 #     break
 
-                last_cursor = next_cursor = quote(join_cursor.format(cursor=next_cursor))
+                last_cursor = next_cursor
 
         return {type_name: data_list}
 
